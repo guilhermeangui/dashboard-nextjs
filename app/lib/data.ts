@@ -37,7 +37,7 @@ export async function fetchLatestInvoices() {
       FROM invoices
       JOIN customers ON invoices.customer_id = customers.id
       ORDER BY invoices.date DESC
-      LIMIT 5`;
+      LIMIT 8`;
 
     const latestInvoices = data.map((invoice) => ({
       ...invoice,
@@ -160,6 +160,7 @@ export async function fetchInvoiceById(id: string) {
       amount: invoice.amount / 100,
     }));
 
+    console.log(invoice);
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
